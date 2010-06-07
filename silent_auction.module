@@ -1,0 +1,72 @@
+<?php
+
+include_once('silent_auction.features.inc');
+
+function silent_auction_form_comment_form_alter(&$form, &$form_state) {
+  unset($form['_author']);
+  unset($form['homepage']);
+
+  $form['name'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Your full name'),
+    '#maxlength' => 60,
+    '#size' => 30,
+    '#default_value' => '',
+    '#required' => TRUE,
+    );
+
+  $form['comment_filter']['comment'] = array(
+    '#type' => 'textfield',
+    '#size' => '10',
+    '#title' => t('Your bid for this item.'),
+    '#default_value' => '$',
+    '#required' => TRUE,
+  );
+
+    $form['comment_filter']['format'][$i]['#value'] = '';
+}
+
+function silent_auction_block($op = 'list', $delta = '', $edit = array()) {
+  // The $op parameter determines what piece of information is being requested.
+  switch ($op) {
+    case 'list':
+      $blocks['total-raised'] = array(
+        'info'       => t('Total amount raised so far'),
+        'status'     => TRUE,
+        'visibility' => 1,
+      );
+      return $blocks;
+    case 'configure':
+      $form = array();
+      return $form;
+    case 'save':
+      return;
+    case 'view':
+      // If $op is "view", then we need to generate the block for display
+      // purposes. The $delta parameter tells us which block is being requested.
+      switch ($delta) {
+        case 'total-raised':
+          $block['subject'] = t('Total raised');
+          $block['content'] = _silent_auction_totalraised();
+          break;
+      }
+      return $block;
+  }
+}
+
+function _silent_auction_totalraised() {
+   
+    $result = db_query("select nid,max(comment) as maxbid
+                            from {comments} group by nid");
+   
+    $total = '';
+    while ($onerow = db_fetch_object($result)) {
+        $bid = str_replace("$","",$onerow->maxbid);
+        $total = $total + $bid ;
+      }
+    $block .= "<p>So far we've raised <b>\$" .
+                        number_format($total,2) .
+                        "</b>. Thank you (and keep bidding!)</p>";
+
+    return $block;
+}

@@ -1,0 +1,20 @@
+Silent Auction
+==============
+
+A simple silent auction system implemented using the Drupal Features module.
+
+Peter Rukavina (http://twitter.com/ruk) made a post for his recipe 
+for running a silent auction using Drupal: http://ruk.ca/content/how-run-a-silent-auction-using-drupal 
+
+I took the recipe and turned it into a feature, and added his custom code to 
+the generated silent_auction.module code.
+
+See the demo / development site at http://silentauction.bmannconsulting.com
+
+TO DO
+
+* BUG: the block code doesn't currently work
+* BUG: the string overrides module isn't currently exportable
+* FEATURE: should add some views and blocks showing recent bids
+* FEATURE: combine it with some views / templates / themes that show bids 
+           in a better format than default comments
