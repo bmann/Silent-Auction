@@ -1,3 +1,5 @@
+core = 6.x
+
 projects[] = captcha
 projects[] = cck
 projects[] = ctools
