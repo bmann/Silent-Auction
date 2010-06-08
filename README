@@ -14,7 +14,16 @@ See the demo / development site at http://silentauction.bmannconsulting.com
 Installation
 ==============
 
-The codebase is best obtained using Drush Make:
+You can install the silent_auction module in an existing Drupal site by placing 
+it in the modules directory and enabling it. The required modules are listed 
+as dependencies.
+
+Alternately, you can install a fresh site with all required modules by executing 
+the included drush_make file.
+
+Assuming you have Drush (http://drupal.org/project/drush) and Drush Make 
+(http://drupal.org/project/drush_make) installed, you can run the following 
+command:
 
 $ wget http://github.com/rypalmer/builds/raw/master/silent_auction.make
 $ drush make silent_auction.make silent_auction
@@ -22,10 +31,8 @@ $ drush make silent_auction.make silent_auction
 Follow the standard Drupal installation method way by browsing to http://127.0.0.1/silent-auction or the IP address or domain name of your server, and following the prompts.
 
 TO DO
-==============
+=====
 
-* BUG: the block code doesn't currently work
 * BUG: the string overrides module isn't currently exportable
-* FEATURE: should add some views and blocks showing recent bids
 * FEATURE: combine it with some views / templates / themes that show bids 
            in a better format than default comments
