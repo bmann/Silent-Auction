@@ -44,3 +44,12 @@ function silent_auction_strongarm() {
   $args = func_get_args();
   return call_user_func_array('_silent_auction_strongarm', $args);
 }
+
+/**
+ * Implementation of hook_views_default_views().
+ */
+function silent_auction_views_default_views() {
+  module_load_include('inc', 'silent_auction', 'silent_auction.features.views');
+  $args = func_get_args();
+  return call_user_func_array('_silent_auction_views_default_views', $args);
+}

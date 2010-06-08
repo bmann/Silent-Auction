@@ -121,7 +121,7 @@ function _silent_auction_content_default_fields() {
     'field_name' => 'field_photo',
     'type_name' => 'silentauctionitem',
     'display_settings' => array(
-      'weight' => '36',
+      'weight' => '37',
       'parent' => '',
       'label' => array(
         'format' => 'hidden',
@@ -131,7 +131,7 @@ function _silent_auction_content_default_fields() {
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'display_imagelink',
+        'format' => 'imagefield__lightbox2__display__original',
         'exclude' => 0,
       ),
       '4' => array(
@@ -180,7 +180,7 @@ function _silent_auction_content_default_fields() {
     'field_name' => 'field_value',
     'type_name' => 'silentauctionitem',
     'display_settings' => array(
-      'weight' => '37',
+      'weight' => '36',
       'parent' => '',
       'label' => array(
         'format' => 'inline',
@@ -301,7 +301,7 @@ function _silent_auction_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_anonymous_silentauctionitem';
-  $strongarm->value = 0;
+  $strongarm->value = '0';
 
   $export['comment_anonymous_silentauctionitem'] = $strongarm;
   $strongarm = new stdClass;
@@ -315,7 +315,7 @@ function _silent_auction_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_default_mode_silentauctionitem';
-  $strongarm->value = '4';
+  $strongarm->value = '2';
 
   $export['comment_default_mode_silentauctionitem'] = $strongarm;
   $strongarm = new stdClass;
